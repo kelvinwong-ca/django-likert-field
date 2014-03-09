@@ -1,7 +1,7 @@
 django-likert-field
 ===================
 
-A Likert field for Django models
+A Likert field for Django models. Useful for adding ratings star functionality.
 
 Installation
 ============
@@ -18,6 +18,5 @@ Use in the same manner as a regular model field::
 
     from likert_field.models import LikertField
     class PetShopSurvey(models.Model):
-        respondent = models.CharField(max_length=255)
         i_like_snakes = LikertField()
-        parrots = LikertField("I like parrots.")
+        parrots = LikertField("i like parrots.")
