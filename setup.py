@@ -93,6 +93,6 @@ setup(
                  #'Programming Language :: Python :: 3.2',
                  #'Programming Language :: Python :: 3.3',
                  'Topic :: Internet :: WWW/HTTP'],
-    packages=['likert_field'],
+    packages=['likert_field', 'likert_field.templatetags'],
     cmdclass=cmdclasses
 )
