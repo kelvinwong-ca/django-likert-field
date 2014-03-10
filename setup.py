@@ -84,6 +84,7 @@ setup(
     author_email='code@kelvinwong.ca',
     url='https://github.com/kelvinwong-ca/django-likert-field',
     classifiers=['Development Status :: 3 - Alpha',
+                 'Environment :: Web Environment',
                  'Framework :: Django',
                  'Intended Audience :: Developers',
                  'License :: OSI Approved :: BSD License',
