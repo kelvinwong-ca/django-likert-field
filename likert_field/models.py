@@ -1,6 +1,8 @@
 #-*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from six import string_types
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -15,6 +17,16 @@ class LikertField(models.IntegerField):
         if 'null' not in kwargs and not kwargs.get('null'):
             kwargs['null'] = True
         super(LikertField, self).__init__(*args, **kwargs)
+
+    def get_prep_value(self, value):
+        """The field expects a number as a string (ie. '2').
+           Unscored fields are empty strings and are stored as NULL
+        """
+        if value is None:
+            return None
+        if isinstance(value, string_types) and len(value) == 0:
+            return None
+        return int(value)
 
     def formfield(self, **kwargs):
         defaults = {
