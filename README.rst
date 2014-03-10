@@ -48,3 +48,21 @@ Use in the same manner as a regular model field::
     # assuming one-star Likert item score
     #
     <i class='fa fa-star likert-star'></i> ... other stars maybe...
+
+Bugs! Help!!
+============
+
+If you find any bugs in this software please report them via the Github
+issue tracker [#]_ or send an email to code@kelvinwong.ca. Any serious
+security bugs should be reported via email only.
+
+.. [#] Django-likert-field issue tracker https://github.com/kelvinwong-ca/django-likert-field/issues
+
+Thank-you
+=========
+
+Thank-you for taking the time to evaluate this software. I appreciate
+receiving feedback on your experiences using it and I welcome code
+contributions and development ideas.
+
+http://www.kelvinwong.ca/coders
