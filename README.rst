@@ -26,7 +26,9 @@ Use in the same manner as a regular model field::
     #
     # jQuery star rating widget should be able to grab by 'likert-field' class
     #
-    <label for="id_i_like_snakes">I like snakes:</label> <input id="id_i_like_snakes" type="text" name="i_like_snakes" class="likert-field" />
+    <label for="id_i_like_snakes">I like snakes:</label>
+    <input id="id_i_like_snakes" type="text" name="i_like_snakes"
+     class="likert-field" />
 
     # detail.html
     #
