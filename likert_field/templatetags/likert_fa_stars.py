@@ -9,7 +9,7 @@ register = template.Library()
 # Font-awesome stars ver 4
 unlit_star_4 = ("<i class='fa fa-star-o likert-star'></i>",)
 star_4 = ("<i class='fa fa-star likert-star'></i>",)
-unanswered = "<i class='fa fa-ban likert-star'></i>"
+unanswered_4 = "<i class='fa fa-ban likert-star'></i>"
 
 
 def fa_stars4(num, max_stars=5):
@@ -20,7 +20,7 @@ def fa_stars4(num, max_stars=5):
     followed by max_stars - num empty stars
     """
     if num is None:
-        return unanswered
+        return unanswered_4
 
     remainder = max_stars - int(num)
     return ''.join(star_4 * int(num) + unlit_star_4 * remainder)
