@@ -1,6 +1,8 @@
 #-*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from six import string_types
+
 from django import template
 
 
@@ -22,7 +24,7 @@ def bs_stars3(num, max_stars=5):
     If num is not None, the returned string will contain num solid stars
     followed by max_stars - num empty stars
     """
-    if num is None:
+    if num is None or (isinstance(num, string_types) and len(num) == 0):
         return unanswered_3
 
     remainder = max_stars - int(num)
