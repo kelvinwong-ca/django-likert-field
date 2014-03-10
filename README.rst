@@ -7,6 +7,12 @@ functionality.
 Installation
 ============
 
+This package depends on Six the Python compatibility toolkit
+
+::
+
+    pip install six
+
 ::
 
     pip install django-likert-field
