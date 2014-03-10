@@ -58,6 +58,12 @@ security bugs should be reported via email only.
 
 .. [#] Django-likert-field issue tracker https://github.com/kelvinwong-ca/django-likert-field/issues
 
+Links
+=====
+
+* https://pypi.python.org/pypi/django-likert-field/
+* https://github.com/kelvinwong-ca/django-likert-field
+
 Thank-you
 =========
 
