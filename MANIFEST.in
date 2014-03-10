@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+include CONTRIBUTORS.txt
+
+recursive-include likert_field/tests *.py
+recursive-include tests *.py
