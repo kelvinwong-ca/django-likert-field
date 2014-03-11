@@ -144,7 +144,8 @@ You can attach styles to the lit and unlit stars using standard methods::
         color: #c0c0c0;
     }
 
-;
+The stars will then take on the styles.
+
 .. figure:: https://github.com/kelvinwong-ca/django-likert-field/raw/master/docs/images/fa_stars_deluxe_style.png
 
    The gold stars on Mac Chrome.
