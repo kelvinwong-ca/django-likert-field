@@ -49,6 +49,106 @@ Use in the same manner as a regular model field::
     #
     <i class='fa fa-star likert-star'></i> ... other stars maybe...
 
+LikertField in your Django models
+=================================
+
+.. warning::
+
+   If you need a 7-point Likert item (the default is 5) you must configure the model field *and* the template tag. The value stored in the database is a plain integer with no knowledge of the item settings.
+
+
+
+Rendering Your Likert Fields
+============================
+
+Once the data is in the model, you can render the data by passing the model instance to the Django template via the template context in the regular manner. Once in the template, you can use one of the templatetags to render the integer data as a row of stars.::
+
+    # in Django template detail.html
+    #
+    {% load likert_fa_stars %}
+    {{ survey.i_like_snakes|fa_stars4|safe }}
+
+    # It will render the following HTML
+    <i class='fa fa-star likert-star'></i>...etc...
+
+The general scheme is to filter the model field through the appropriate templatetag then filter it again through the 'safe' tag to allow it to be rendered without processing by Django.
+
+Bootstrap stars
+---------------
+
+Bootstrap uses Glyphicon halflings for font icons. There is a templatetags set for Bootstrap::
+
+    # in Django template detail.html
+    #
+    {% load likert_bs_stars %}
+    {{ survey.i_like_snakes|bs_stars3|safe }}
+
+    # It will render the following HTML
+    <i class='glyphicon glyphicon-star likert-star'></i>...etc...
+
+The two star types for Bootsrap 3 are::
+
+    # A lit star
+    <i class='glyphicon glyphicon-star likert-star'></i>
+
+    # An unlit star
+    <i class='glyphicon glyphicon-star-empty likert-star'></i>
+
+You can add additional style to the star by using the 'likert-star' class::
+
+    /* Color the star red comrade */
+    .likert-star {
+        color: #ff0000;
+    }
+
+Font Awesome stars
+------------------
+
+Font Awesome is a popular font icon set. There is a templatetags set for it::
+
+    # in Django template detail.html
+    #
+    {% load likert_fa_stars %}
+    {{ survey.i_like_snakes|fa_stars4|safe }}
+
+    # It will render the following HTML
+    <i class='fa fa-star likert-star'></i>...etc...
+
+The two star types for Font Awesome 4 are::
+
+    # A lit star
+    <i class='fa fa-star likert-star'></i>
+
+    # An unlit star
+    <i class='fa fa-star-o likert-star'></i>
+
+You can add additional style to the star by using the 'likert-star' class::
+
+    /* Color the star Foundation 5 blue */
+    .likert-star {
+        color: #008CBA;
+    }
+
+You can attach styles to the lit and unlit stars using standard methods::
+
+    /* Gold stars wih outline */
+    .fa.fa-star.likert-star {
+        color: #ffd76e;
+        text-shadow:-1px -1px 0 #e1ba53,
+                     1px -1px 0 #e1ba53,
+                    -1px  1px 0 #e1ba53,
+                     1px  1px 0 #e1ba53;
+        -webkit-text-stroke: 1px #e1ba53;
+    }
+    .fa.fa-star-o.likert-star {
+        color: #c0c0c0;
+    }
+
+;
+.. figure:: https://github.com/kelvinwong-ca/django-likert-field/raw/master/docs/images/fa_stars_deluxe_style.png
+
+   The gold stars on Mac Chrome.
+
 Bugs! Help!!
 ============
 
