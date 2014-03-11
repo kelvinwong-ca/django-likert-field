@@ -32,6 +32,9 @@ class DemoTester(Command):
     def run(self):
         sys.dont_write_bytecode = True
         from django import get_version
+        if get_version() not in self.test_settings.keys():
+            print("Please install Django 1.4 - 1.6 to run the test suite")
+            exit(-1)
         os.environ['DJANGO_SETTINGS_MODULE'] = self.test_settings[
             get_version()]
         try:
