@@ -76,6 +76,10 @@ The general scheme is to filter the model field through the appropriate template
 Bootstrap stars
 ---------------
 
+.. figure:: https://github.com/kelvinwong-ca/django-likert-field/raw/master/docs/images/bs_stars_color_style.png
+
+   The stars on Mac Chrome.
+
 Bootstrap uses Glyphicon halflings for font icons. There is a templatetags set for Bootstrap::
 
     # in Django template detail.html
@@ -100,6 +104,12 @@ You can add additional style to the star by using the 'likert-star' class::
     .likert-star {
         color: #ff0000;
     }
+
+The stars will then take on the color you want.
+
+.. figure:: https://github.com/kelvinwong-ca/django-likert-field/raw/master/docs/images/bs_stars_red_style.png
+
+   The red stars on Mac Chrome.
 
 Font Awesome stars
 ------------------
@@ -128,6 +138,12 @@ You can add additional style to the star by using the 'likert-star' class::
     .likert-star {
         color: #008CBA;
     }
+
+The stars will then take on the color you want.
+
+.. figure:: https://github.com/kelvinwong-ca/django-likert-field/raw/master/docs/images/fa_stars_foundation_5_style.png
+
+   The blue stars on Mac Chrome.
 
 You can attach styles to the lit and unlit stars using standard methods::
 
