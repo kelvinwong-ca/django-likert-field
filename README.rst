@@ -4,16 +4,20 @@ django-likert-field
 A Likert field for Django models. Useful for adding ratings star
 functionality.
 
+.. figure:: https://github.com/kelvinwong-ca/django-likert-field/raw/master/docs/images/bs_stars_color_style.png
+
+   Rendered using the Bootstrap-star-rating plugin for jQuery [#]_
+
+.. [#] Bootstrap-star-rating https://github.com/kartik-v/bootstrap-star-rating
+
 Installation
 ============
 
-This package depends on Six the Python compatibility toolkit
-
-::
+This package depends on Six the Python compatibility toolkit (assuming that Django 1.4 or later is already installed)::
 
     pip install six
 
-::
+It can be installed in the usual manner with Pip::
 
     pip install django-likert-field
 
@@ -28,15 +32,15 @@ Use in the same manner as a regular model field::
     class PetShopSurvey(models.Model):
         i_like_snakes = LikertField()
 
-    # Renders in add.html
+    # Renders a widget in add.html
     #
-    # jQuery star rating widget should be able to grab by 'likert-field' class
+    # jQuery star-rating widget should be able to grab by 'likert-field' class
     #
     <label for="id_i_like_snakes">I like snakes:</label>
     <input id="id_i_like_snakes" type="text" name="i_like_snakes"
      class="likert-field" />
 
-    # detail.html
+    # detail.html Django template
     #
     # assume 'survey' is context object holding instance
     #
