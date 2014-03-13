@@ -94,7 +94,7 @@ Bootstrap uses Glyphicon halflings for font icons. There is a templatetags set f
     # It will render the following HTML
     <i class='glyphicon glyphicon-star likert-star'></i>...etc...
 
-The two star types for Bootsrap 3 are::
+The two star types for Bootstrap 3 are::
 
     # A lit star
     <i class='glyphicon glyphicon-star likert-star'></i>
