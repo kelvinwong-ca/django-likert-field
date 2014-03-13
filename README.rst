@@ -46,7 +46,7 @@ Use in the same manner as a regular model field::
     # assume 'survey' is context object holding instance
     #
     {% load likert_fa_stars %}
-    {{ survey.i_like_snakes|fa_stars4|safe }}
+    {{ survey.i_like_snakes|fa_stars4 }}
 
     # Renders in detail.html
     #
@@ -71,12 +71,12 @@ Once the data is in the model, you can render the data by passing the model inst
     # in Django template detail.html
     #
     {% load likert_fa_stars %}
-    {{ survey.i_like_snakes|fa_stars4|safe }}
+    {{ survey.i_like_snakes|fa_stars4 }}
 
     # It will render the following HTML
     <i class='fa fa-star likert-star'></i>...etc...
 
-The general scheme is to filter the model field through the appropriate templatetag then filter it again through the 'safe' tag to allow it to be rendered without processing by Django.
+The general scheme is to filter the model field through the appropriate templatetag.
 
 Bootstrap stars
 ---------------
