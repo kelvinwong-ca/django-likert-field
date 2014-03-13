@@ -89,7 +89,7 @@ Bootstrap uses Glyphicon halflings for font icons. There is a templatetags set f
     # in Django template detail.html
     #
     {% load likert_bs_stars %}
-    {{ survey.i_like_snakes|bs_stars3|safe }}
+    {{ survey.i_like_snakes|bs_stars3 }}
 
     # It will render the following HTML
     <i class='glyphicon glyphicon-star likert-star'></i>...etc...
@@ -123,7 +123,7 @@ Font Awesome is a popular font icon set. There is a templatetags set for it::
     # in Django template detail.html
     #
     {% load likert_fa_stars %}
-    {{ survey.i_like_snakes|fa_stars4|safe }}
+    {{ survey.i_like_snakes|fa_stars4 }}
 
     # It will render the following HTML
     <i class='fa fa-star likert-star'></i>...etc...
