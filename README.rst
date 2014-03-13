@@ -171,6 +171,42 @@ The stars will then take on the styles.
 
    The gold stars on Mac Chrome.
 
+Rendering 7-point Likert item
+=============================
+
+Rendering a 7-point Likert (or an n-point Likert) is simple. Append the maximum number of stars to the filter as a parameter::
+
+    {{ survey.i_like_snakes|bs_stars_3:7 }}
+
+Filters available
+=================
+
+Bootstrap
+---------
+
+For Bootstrap 2 & 3::
+
+    {% load likert_bs_stars %}
+
+    # Bootstrap 2
+    {{ survey.i_like_snakes|bs_stars_2 }}
+
+    # Bootstrap 3
+    {{ survey.i_like_snakes|bs_stars_3 }}
+
+Font Awesome
+------------
+
+For Font Awesome 3 & 4::
+
+    {% load likert_fa_stars %}
+
+    # Font Awesome 3
+    {{ survey.i_like_snakes|fa_stars3 }}
+
+    # Font Awesome 4
+    {{ survey.i_like_snakes|fa_stars4 }}
+
 Bugs! Help!!
 ============
 
