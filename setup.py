@@ -67,9 +67,10 @@ class Tester(Command):
         except ImportError:
             print("Please install Django => 1.4 to run the test suite")
             exit(-1)
-        from test_suite import test_fields, test_forms
+        from test_suite import test_fields, test_forms, test_templatetags
         suite = defaultTestLoader.loadTestsFromModule(test_fields)
         suite.addTests(defaultTestLoader.loadTestsFromModule(test_forms))
+        suite.addTests(defaultTestLoader.loadTestsFromModule(test_templatetags))
         runner = TextTestRunner()
         result = runner.run(suite)
         if result.wasSuccessful() is not True:
@@ -83,7 +84,9 @@ setup(
     long_description=long_description,
     version=__version__,
     license='BSD',
-    keywords=['Likert', 'Django', 'Django-Likert-Field'],
+    keywords=[
+        'Likert', 'ratings','star-rating', 'star-classification', 'Django',
+        'model-field', 'Django-Likert-Field'],
     author='Kelvin Wong',
     author_email='code@kelvinwong.ca',
     url='https://github.com/kelvinwong-ca/django-likert-field',

@@ -1,20 +1,41 @@
 #-*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from six import string_types
-
 from django import template
+from django.utils.safestring import mark_safe
+
+from .likert_star_tools import render_stars
 
 
 register = template.Library()
 
-# Bootstrap glyphicon stars ver 3
-#
 # Glyphicon halflings for Bootstrap courtesy http://glyphicons.com/
 #
-unlit_star_3 = ("<i class='glyphicon glyphicon-star-empty likert-star'></i>",)
-star_3 = ("<i class='glyphicon glyphicon-star likert-star'></i>",)
-unanswered_3 = "<i class='glyphicon glyphicon-ban-circle likert-star'></i>"
+# Bootstrap glyphicon stars ver 2
+star_set_2 = {
+    'star': "<i class='icon-star likert-star'></i>",
+    'unlit': "<i class='icon-star-empty likert-star'></i>",
+    'noanswer': "<i class='icon-ban-circle likert-star'></i>"
+}
+
+# Bootstrap glyphicon stars ver 3
+star_set_3 = {
+    'star': "<i class='glyphicon glyphicon-star likert-star'></i>",
+    'unlit': "<i class='glyphicon glyphicon-star-empty likert-star'></i>",
+    'noanswer': "<i class='glyphicon glyphicon-ban-circle likert-star'></i>"
+}
+
+
+def bs_stars2(num, max_stars=5):
+    """
+    Stars for Bootstrap 2
+
+    If num is not None, the returned string will contain num solid stars
+    followed by max_stars - num empty stars
+    """
+    return mark_safe(render_stars(num, max_stars, star_set_2))
+
+register.filter('bs_stars2', bs_stars2)
 
 
 def bs_stars3(num, max_stars=5):
@@ -24,10 +45,6 @@ def bs_stars3(num, max_stars=5):
     If num is not None, the returned string will contain num solid stars
     followed by max_stars - num empty stars
     """
-    if num is None or (isinstance(num, string_types) and len(num) == 0):
-        return unanswered_3
-
-    remainder = max_stars - int(num)
-    return ''.join(star_3 * int(num) + unlit_star_3 * remainder)
+    return mark_safe(render_stars(num, max_stars, star_set_3))
 
 register.filter('bs_stars3', bs_stars3)
