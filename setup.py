@@ -67,8 +67,8 @@ class Tester(Command):
         except ImportError:
             print("Please install Django => 1.4 to run the test suite")
             exit(-1)
-        from test_suite import test_fields, test_forms, test_templatetags
-        suite = defaultTestLoader.loadTestsFromModule(test_fields)
+        from test_suite import test_models, test_forms, test_templatetags
+        suite = defaultTestLoader.loadTestsFromModule(test_models)
         suite.addTests(defaultTestLoader.loadTestsFromModule(test_forms))
         suite.addTests(defaultTestLoader.loadTestsFromModule(test_templatetags))
         runner = TextTestRunner()
