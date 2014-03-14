@@ -1,10 +1,9 @@
 #-*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from six import string_types
-
 from django.db import models
 from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.six import string_types
 from django.utils.translation import ugettext_lazy as _
 
 import likert_field.forms as forms
@@ -17,6 +16,7 @@ class LikertField(models.IntegerField):
     description = _('Likert item field')
 
     def __init__(self, *args, **kwargs):
+        """LikertField stores items with no answer as NULL"""
         if 'null' not in kwargs and not kwargs.get('null'):
             kwargs['null'] = True
         super(LikertField, self).__init__(*args, **kwargs)
