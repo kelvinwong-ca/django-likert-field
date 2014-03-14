@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from distutils.core import setup, Command
 import os
+import re
 import sys
 
 from likert_field import __version__
@@ -32,15 +33,17 @@ class DemoTester(Command):
     def run(self):
         sys.dont_write_bytecode = True
         from django import get_version
-        if get_version() not in self.test_settings.keys():
-            print("Please install Django 1.4 - 1.6 to run the test suite")
+        django_release = re.search(r'^\d\.\d', get_version()).group(0)
+        if ((django_release not in self.test_settings.keys())
+                or (get_version() < '1.4.2')):
+            print("Please install Django 1.4.2 - 1.6 to run the test suite")
             exit(-1)
         os.environ['DJANGO_SETTINGS_MODULE'] = self.test_settings[
-            get_version()]
+            django_release]
         try:
             from django.core.management import call_command
         except ImportError:
-            print("Please install Django 1.4 - 1.6 to run the test suite")
+            print("Please install Django 1.4.2 - 1.6 to run the test suite")
             exit(-1)
 
         call_command('test', 'likert_test_app', interactive=False, verbosity=1)
@@ -65,12 +68,13 @@ class Tester(Command):
         try:
             from django.utils.unittest import TextTestRunner, defaultTestLoader
         except ImportError:
-            print("Please install Django => 1.4 to run the test suite")
+            print("Please install Django => 1.4.2 to run the test suite")
             exit(-1)
         from test_suite import test_models, test_forms, test_templatetags
         suite = defaultTestLoader.loadTestsFromModule(test_models)
         suite.addTests(defaultTestLoader.loadTestsFromModule(test_forms))
-        suite.addTests(defaultTestLoader.loadTestsFromModule(test_templatetags))
+        suite.addTests(
+            defaultTestLoader.loadTestsFromModule(test_templatetags))
         runner = TextTestRunner()
         result = runner.run(suite)
         if result.wasSuccessful() is not True:
@@ -85,7 +89,7 @@ setup(
     version=__version__,
     license='BSD',
     keywords=[
-        'Likert', 'ratings','star-rating', 'star-classification', 'Django',
+        'Likert', 'ratings', 'star-rating', 'star-classification', 'Django',
         'model-field', 'Django-Likert-Field'],
     author='Kelvin Wong',
     author_email='code@kelvinwong.ca',
