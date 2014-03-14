@@ -22,6 +22,17 @@ It can be installed in the usual manner with Pip::
 
     pip install django-likert-field
 
+Add the app to your list of installed apps::
+
+    # your_project/settings.py
+    #
+    INSTALLED_APPS = (
+        'likert_field',
+
+        ...other apps...
+    )
+
+You can now attach the field to your models.
 
 Basic usage
 ===========
