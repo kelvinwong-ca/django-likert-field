@@ -24,11 +24,7 @@ Django-likert-field has the following benefits:
 Installation
 ============
 
-This package depends on Six the Python compatibility toolkit (assuming that Django 1.4 or later is already installed)::
-
-    pip install six
-
-It can be installed in the usual manner with Pip::
+This package Django 1.4.2 or later. It can be installed in the usual manner with Pip::
 
     pip install django-likert-field
 
