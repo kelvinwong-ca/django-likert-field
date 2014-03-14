@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db.models.fields import Field
 from django.test import SimpleTestCase
+from django.utils.six.moves import xrange
 
 from likert_field.models import LikertField
 

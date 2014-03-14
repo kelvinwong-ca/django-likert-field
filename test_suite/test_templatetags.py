@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.test import SimpleTestCase
+from django.utils.six.moves import xrange
 
 from likert_field.templatetags.likert_star_tools import render_stars
 from likert_field.templatetags.likert_fa_stars import fa_stars3, fa_stars4
