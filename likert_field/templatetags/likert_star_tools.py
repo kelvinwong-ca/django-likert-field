@@ -4,11 +4,6 @@ from __future__ import unicode_literals
 from six import string_types
 
 
-TAG_TEMPLATE = "<{tag} class='{tag_class}'{extra}>{inner}</{tag}>"
-
-star_set_keys = ['star', 'unlit', 'noanswer']
-
-
 def render_stars(num, max_stars, star_set):
     """
     Star renderer returns a HTML string of stars
@@ -30,4 +25,5 @@ def render_stars(num, max_stars, star_set):
         num = max_stars
         difference = 0
 
-    return ''.join(star_set['star'] * int(num) + star_set['unlit'] * difference)
+    return ''.join(
+        star_set['star'] * int(num) + star_set['unlit'] * difference)

@@ -33,7 +33,7 @@ def fa_stars3(num, max_stars=5):
     """
     return mark_safe(render_stars(num, max_stars, star_set_3))
 
-register.filter('fa_stars3', fa_stars3, is_safe=True)
+register.filter('fa_stars3', fa_stars3)
 
 
 def fa_stars4(num, max_stars=5):

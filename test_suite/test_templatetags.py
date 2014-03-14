@@ -27,16 +27,29 @@ class StarToolsTestCase(SimpleTestCase):
                 self.assertEqual(stars.count(self.star_set['unlit']), max_stars - num)
 
     def test_render_stars_none(self):
+        """
+        By design items with no answer are stored as NULL which are converted
+        to None by the ORM. They are rendered as a ban icon which looks
+        similar enough to the empty set.
+        """
         stars = render_stars(None, 5, self.star_set)
         self.assertEqual(len(stars), 1)
         self.assertEqual(stars.count(self.star_set['noanswer']), 1)
 
     def test_render_stars_blank(self):
+        """
+        If your database is storing numbers as strings you might need this.
+        Empty strings holding non answered items are rendered as a ban symbol.
+        """
         stars = render_stars('', 5, self.star_set)
         self.assertEqual(len(stars), 1)
         self.assertEqual(stars.count(self.star_set['noanswer']), 1)
 
     def test_num_greater_than_max_error(self):
+        """
+        When the number of stars scored exceeds the maximum stars displayed,
+        just display the maximum stars allowed
+        """
         num = 4
         max_stars = 3
         self.assertTrue(num > max_stars)
