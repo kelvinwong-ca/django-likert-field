@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from six import string_types
+from django.utils.six import string_types
 
 
 def render_stars(num, max_stars, star_set):
