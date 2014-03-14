@@ -11,6 +11,16 @@ functionality.
 
 .. [#] Bootstrap-star-rating https://github.com/kartik-v/bootstrap-star-rating
 
+Why use this?
+=============
+
+Django-likert-field has the following benefits:
+
+* Just a simple field type for your models (not much else)
+* Doesn't make you add a new table full of stuff when you only need a field
+* Includes useful and simple star rendering filters for Font Awesome and Bootstrap/Glyphicons halflings
+* Includes a simple Django widget that generates HTML that is usable by jQuery star-ratings widgets
+
 Installation
 ============
 
