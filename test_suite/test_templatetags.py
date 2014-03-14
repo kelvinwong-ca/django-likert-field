@@ -24,7 +24,8 @@ class StarToolsTestCase(SimpleTestCase):
                 stars = render_stars(num, max_stars, self.star_set)
                 self.assertEqual(len(stars), max_stars)
                 self.assertEqual(stars.count(self.star_set['star']), num)
-                self.assertEqual(stars.count(self.star_set['unlit']), max_stars - num)
+                self.assertEqual(
+                    stars.count(self.star_set['unlit']), max_stars - num)
 
     def test_render_stars_none(self):
         """
@@ -57,6 +58,22 @@ class StarToolsTestCase(SimpleTestCase):
         self.assertEqual(len(stars), max_stars)
         self.assertEqual(stars.count(self.star_set['star']), max_stars)
         self.assertEqual(stars.count(self.star_set['unlit']), 0)
+
+    def test_render_string_numbers(self):
+        """
+        String representations of integers are rendered in the usual manner
+        """
+        max_test_stars = 50
+        for max_stars in xrange(1, max_test_stars + 1):
+            for num in xrange(max_stars + 1):
+                num = str(num)
+                max_stars = str(max_stars)
+                stars = render_stars(num, max_stars, self.star_set)
+                self.assertEqual(len(stars), int(max_stars))
+                self.assertEqual(stars.count(self.star_set['star']), int(num))
+                self.assertEqual(
+                    stars.count(self.star_set['unlit']),
+                    int(max_stars) - int(num))
 
 
 class BootstrapTestCase(SimpleTestCase):
@@ -110,7 +127,8 @@ class BootstrapTestCase(SimpleTestCase):
 
     def test_fa_stars3_render_noanswer(self):
         num = None
-        expected_stars = "<i class='glyphicon glyphicon-ban-circle likert-star'></i>"
+        expected_stars = (
+            "<i class='glyphicon glyphicon-ban-circle likert-star'></i>")
         stars = bs_stars3(num)
         self.assertEqual(stars, expected_stars)
 

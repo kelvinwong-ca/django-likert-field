@@ -20,7 +20,7 @@ def render_stars(num, max_stars, star_set):
     if num is None or (isinstance(num, string_types) and len(num) == 0):
         return star_set['noanswer']
 
-    difference = max_stars - int(num)
+    difference = int(max_stars) - int(num)
     if difference < 0:
         num = max_stars
         difference = 0
