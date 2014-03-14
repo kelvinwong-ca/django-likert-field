@@ -33,6 +33,7 @@ class LikertFieldTestCase(SimpleTestCase):
     def test_get_prep_value_negative_int(self):
         item = LikertField()
         self.assertIsInstance(item.get_prep_value(-1), int)
+        self.assertEqual(item.get_prep_value(-1), 0)
 
     def test_get_prep_value_empty_string(self):
         item = LikertField()

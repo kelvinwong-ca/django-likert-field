@@ -13,6 +13,7 @@ import likert_field.forms as forms
 @python_2_unicode_compatible
 class LikertField(models.IntegerField):
     """A Likert field is simply stored as an IntegerField"""
+
     description = _('Likert item field')
 
     def __init__(self, *args, **kwargs):
@@ -36,7 +37,11 @@ class LikertField(models.IntegerField):
         if isinstance(value, string_types) and len(value) == 0:
             return None
 
-        return int(value)
+        value = int(value)
+        if value < 0:
+            value = 0
+
+        return value
 
     def formfield(self, **kwargs):
         defaults = {
