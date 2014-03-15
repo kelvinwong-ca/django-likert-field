@@ -24,11 +24,11 @@ Django-likert-field has the following benefits:
 Installation
 ============
 
-This package Django 1.4.2 or later. It can be installed in the usual manner with Pip::
+This package requires Django 1.4.2 or later. It can be installed in the usual manner with Pip::
 
     pip install django-likert-field
 
-Add the app to your list of installed apps::
+Then add the app to your list of installed apps::
 
     # your_project/settings.py
     #
@@ -38,7 +38,7 @@ Add the app to your list of installed apps::
         ...other apps...
     )
 
-You can now attach the field to your models.
+That's it. No 'syncdb' required. You can now attach the field to your models.
 
 Basic usage
 ===========
@@ -46,11 +46,24 @@ Basic usage
 Use in the same manner as a regular model field::
 
     # models.py
+    #
     from likert_field.models import LikertField
     class PetShopSurvey(models.Model):
         i_like_snakes = LikertField()
 
-    # Renders a widget in add.html
+In your add.html template::
+
+    # add.html
+    #
+    <form method="post">
+        {% crsf_token %}
+        {{ form }}
+        <button type="submit">Save</button>
+    </form>
+
+Renders HTML similar to this::
+
+    # Renders a widget
     #
     # jQuery star-rating widget should be able to grab by 'likert-field' class
     #
@@ -58,14 +71,18 @@ Use in the same manner as a regular model field::
     <input id="id_i_like_snakes" type="text" name="i_like_snakes"
      class="likert-field" />
 
-    # detail.html Django template
+When retrieving your responses, use one of the provided Django filters::
+
+    # detail.html
     #
     # assume 'survey' is context object holding instance
     #
     {% load likert_fa_stars %}
     {{ survey.i_like_snakes|fa_stars4 }}
 
-    # Renders in detail.html
+This will render stars for the framework you choose (Font Awesome 4 in this case)::
+
+    # Renders stars
     #
     # assuming one-star Likert item score
     #
