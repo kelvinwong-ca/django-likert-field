@@ -75,7 +75,7 @@ When retrieving your responses, use one of the provided Django filters::
 
     # detail.html
     #
-    # assume 'survey' is context object holding instance
+    # assume 'survey' is the context object holding survey instance
     #
     {% load likert_fa_stars %}
     {{ survey.i_like_snakes|fa_stars4 }}
@@ -125,7 +125,7 @@ If you require a response, you can set 'blank' to False::
 
    By default, users are not required to provide item responses so the field parameter 'blank' is True. If you want to make your item a required field, set 'blank' to False in your field definition.
 
-If you need a score from one to seven from your user (a 7-point Likert item). You can set a combination of min and max values with blank set to False to force a response::
+If you require a score from one to seven from your user (a 7-point Likert item). You can set a combination of min and max values with blank set to False to force a response::
 
     # models.py
     #
@@ -142,9 +142,25 @@ If you need a score from one to seven from your user (a 7-point Likert item). Yo
 
    If you need a 7-point Likert item (the default is assumed to be 5-point) you must configure the model field *and* the template tag. The value stored in the database is a plain integer with no knowledge of the item settings.
 
+Forms
+=====
 
+This package includes a form field called LikertField. It can be used to create a Django form::
 
+    # your_project/forms.py
+    #
+    from django.forms import Form
+    from likert_field.forms import LikertField
 
+    class SurveyForm(Form):
+        i_like_snakes = LikertField()
+
+This will render a form with the following HTML::
+
+    <p>
+      <label for="id_i_like_snakes">I like snakes:</label> 
+      <input id="id_i_like_snakes" type="text" name="i_like_snakes" class="likert-field" />
+    </p>
 
 Rendering Your Likert Fields
 ============================
