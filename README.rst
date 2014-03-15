@@ -78,6 +78,10 @@ LikertField in your Django models
 
    If you need a 7-point Likert item (the default is 5) you must configure the model field *and* the template tag. The value stored in the database is a plain integer with no knowledge of the item settings.
 
+.. warning::
+
+   By default, users are not required to provide responses so the field parameter 'blank' is True. If you want to make a required field, set 'blank' to False in your field definition.
+
 
 
 Rendering Your Likert Fields
