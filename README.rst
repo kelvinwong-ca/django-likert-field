@@ -56,7 +56,7 @@ In your add.html template::
     # add.html
     #
     <form method="post">
-        {% crsf_token %}
+        {% csrf_token %}
         {{ form }}
         <button type="submit">Save</button>
     </form>
