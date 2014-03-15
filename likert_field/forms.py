@@ -9,19 +9,16 @@ from django.utils.translation import ugettext_lazy as _
 from .widgets import LikertTextField
 
 
-class LikertField(fields.Field):
+class LikertField(fields.IntegerField):
     widget = LikertTextField
     default_error_messages = {
         'invalid': _('Please rate how strongly you agree or disagree with '
                      'the statement.'),
+        'min_value': _('Ensure your response is greater than or equal to %(limit_value)s.'),
+        'max_value': _('Ensure your response is less than or equal to %(limit_value)s.'),
     }
 
-    def __init__(self, max_value=None, min_value=None, *args, **kwargs):
-        self.max_value, self.min_value = max_value, min_value
+    def __init__(self, min_value=0, *args, **kwargs):
         kwargs.setdefault('widget', self.widget)
+        kwargs.setdefault('min_value', min_value)
         super(LikertField, self).__init__(*args, **kwargs)
-
-        if max_value is not None:
-            self.validators.append(validators.MaxValueValidator(max_value))
-        if min_value is not None:
-            self.validators.append(validators.MinValueValidator(min_value))
