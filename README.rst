@@ -147,7 +147,7 @@ Forms
 
 This package includes a form field called LikertField. It can be used to create a Django form::
 
-    # your_project/forms.py
+    # forms.py
     #
     from django.forms import Form
     from likert_field.forms import LikertField
@@ -158,9 +158,14 @@ This package includes a form field called LikertField. It can be used to create 
 This will render a form with the following HTML::
 
     <p>
-      <label for="id_i_like_snakes">I like snakes:</label> 
+      <label for="id_i_like_snakes">I like snakes:</label>
       <input id="id_i_like_snakes" type="text" name="i_like_snakes" class="likert-field" />
     </p>
+
+Widget
+======
+
+
 
 Rendering Your Likert Fields
 ============================
