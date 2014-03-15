@@ -6,6 +6,7 @@ from django.test import SimpleTestCase
 from django.utils.six.moves import xrange
 
 from likert_field.models import LikertField
+from likert_field import forms
 
 
 class LikertFieldTestCase(SimpleTestCase):
@@ -17,9 +18,23 @@ class LikertFieldTestCase(SimpleTestCase):
         item = LikertField()
         self.assertIsInstance(item, Field)
 
-    def test_(self):
+    def test_null_set(self):
+        """Unanswered questions are saved as NULL"""
         item = LikertField()
-        print(item)
+        self.assertTrue(item.null)
+
+    def test_null_settable(self):
+        item = LikertField(null=False)
+        self.assertFalse(item.null)
+
+    def test_blank_set(self):
+        """By default, responses are not required"""
+        item = LikertField()
+        self.assertTrue(item.blank)
+
+    def test_blank_settable(self):
+        item = LikertField(blank=False)
+        self.assertFalse(item.blank)
 
     def test_get_prep_value_int(self):
         item = LikertField()
@@ -43,3 +58,9 @@ class LikertFieldTestCase(SimpleTestCase):
     def test_get_prep_value_null(self):
         item = LikertField()
         self.assertTrue(item.get_prep_value(None) is None)
+
+    def test_formfield(self):
+        item = LikertField()
+        ff = item.formfield()
+        self.assertEqual(ff.min_value, 0)
+        self.assertIsInstance(ff, forms.LikertField)

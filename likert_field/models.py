@@ -16,9 +16,17 @@ class LikertField(models.IntegerField):
     description = _('Likert item field')
 
     def __init__(self, *args, **kwargs):
-        """LikertField stores items with no answer as NULL"""
+        """
+        LikertField stores items with no answer as NULL
+
+        By default responses are optional, so 'blank' is True
+        """
         if 'null' not in kwargs and not kwargs.get('null'):
             kwargs['null'] = True
+
+        if 'blank' not in kwargs and not kwargs.get('blank'):
+            kwargs['blank'] = True
+
         super(LikertField, self).__init__(*args, **kwargs)
 
     def __str__(self):
