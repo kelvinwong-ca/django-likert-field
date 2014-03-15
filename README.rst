@@ -91,13 +91,58 @@ This will render stars for the framework you choose (Font Awesome 4 in this case
 LikertField in your Django models
 =================================
 
-.. warning::
+By default, your LikertField has the following settings:
 
-   If you need a 7-point Likert item (the default is 5) you must configure the model field *and* the template tag. The value stored in the database is a plain integer with no knowledge of the item settings.
+* User responses are optional (blank=True)
+* Score is an integer from 0 to n
+* Min value is zero (min_value=0)
+* There is no max value (max_value=None)
+* "No answer" is stored in the database as NULL
+
+LikertField stores the score of your Likert item as a simple integer from zero to n. You can set a max_value if you like but one is not set by default. It is assumed that your item is a 5-point Likert item.
+
+Place the field onto your model::
+
+    # models.py
+    #
+    from django.db import models
+    from likert_field.models import LikertField
+
+    class PetShopSurvey(models.Model):
+        i_like_snakes = LikertField()
+
+If you require a response, you can set 'blank' to False::
+
+    # models.py
+    #
+    from django.db import models
+    from likert_field.models import LikertField
+
+    class PetShopSurvey(models.Model):
+        i_like_snakes = LikertField(blank=False)
 
 .. warning::
 
    By default, users are not required to provide item responses so the field parameter 'blank' is True. If you want to make your item a required field, set 'blank' to False in your field definition.
+
+If you need a score from one to seven from your user (a 7-point Likert item). You can set a combination of min and max values with blank set to False to force a response::
+
+    # models.py
+    #
+    from django.db import models
+    from likert_field.models import LikertField
+
+    class PetShopSurvey(models.Model):
+        i_like_snakes = LikertField(
+            min_value=1,
+            max_value=7,
+            blank=False)
+
+.. warning::
+
+   If you need a 7-point Likert item (the default is assumed to be 5-point) you must configure the model field *and* the template tag. The value stored in the database is a plain integer with no knowledge of the item settings.
+
+
 
 
 
