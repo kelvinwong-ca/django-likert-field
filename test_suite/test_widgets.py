@@ -13,3 +13,8 @@ class LikertTextFieldTestCase(SimpleTestCase):
     def test_instantiation(self):
         w = LikertTextField()
         self.assertIsInstance(w, widgets.TextInput)
+
+    def test_has_likert_class(self):
+        w = LikertTextField()
+        tag = w.render('test', 1)
+        self.assertEqual(tag.count('likert-field'), 1)
