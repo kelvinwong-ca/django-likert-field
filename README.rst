@@ -80,7 +80,7 @@ LikertField in your Django models
 
 .. warning::
 
-   By default, users are not required to provide responses so the field parameter 'blank' is True. If you want to make a required field, set 'blank' to False in your field definition.
+   By default, users are not required to provide item responses so the field parameter 'blank' is True. If you want to make your item a required field, set 'blank' to False in your field definition.
 
 
 
