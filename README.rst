@@ -2,7 +2,7 @@
 django-likert-field
 *******************
 
-A Likert field for Django models. Useful for adding ratings star
+A Likert field for Django models. Useful for adding star-ratings
 functionality.
 
 .. figure:: https://github.com/kelvinwong-ca/django-likert-field/raw/master/docs/images/add_form_rendered.jpg
