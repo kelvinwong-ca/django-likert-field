@@ -58,3 +58,10 @@ class LikertField(models.IntegerField):
         }
         defaults.update(kwargs)
         return super(LikertField, self).formfield(**defaults)
+
+
+try:
+    from south.modelsinspector import add_introspection_rules
+    add_introspection_rules([], ["^likert_field\.models\.LikertField"])
+except ImportError:
+    pass
