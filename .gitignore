@@ -57,5 +57,5 @@ docs/_build/
 .DS_Store
 
 # Sqlite dev dbs
-.sqlite
-.sqlite3
+*.sqlite
+*.sqlite3
