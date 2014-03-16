@@ -1,3 +1,6 @@
+#-*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 
@@ -56,7 +59,7 @@ class SurveyCreateViewTestCase(TestCase):
         self.assertEqual(
             response.context['form'].errors[
                 'questions_should_not_be_optional'],
-            [u'This field is required.'])
+            ['This field is required.'])
 
     def test_added_view(self):
         response = self.client.get(reverse('likert_added'))
