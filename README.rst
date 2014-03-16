@@ -320,6 +320,40 @@ For Font Awesome 3 & 4::
     # Font Awesome 4
     {{ survey.i_like_snakes|fa_stars4 }}
 
+Sample application
+==================
+
+There is a sample application included if you downloaded the tarball. You can try it like this::
+
+    $ pwd
+    /home/user/teststuff/django-likert-field
+    $ cd test_projects/django14
+    $ python manage.py runserver
+
+    Validating models...
+
+    0 errors found
+    Django version 1.4.2, using settings 'django14.settings'
+    Development server is running at http://127.0.0.1:8000/
+    Quit the server with CONTROL-C.
+
+**Note**: This is a Django 1.4.2 application. If you try to run it in Django 1.5 it won't like the URL tags because they changed in Django 1.5. Just run it in Django 1.4.2 and be happy.
+
+Troubleshooting
+===============
+
+Django-likert-field contains two test suites. One is for the field and one is for an implementation of the field in a Django 1.4 project.
+
+You can run the field tests by downloading the tarball and running 'test' in setup.py::
+
+    $ python setup.py test
+
+You can run the Django 1.4 demo test in a similar manner::
+
+    $ python setup.py test_demo
+
+Needless to say you will need to have Django 1.4.2 or later installed.
+
 Bugs! Help!!
 ============
 
