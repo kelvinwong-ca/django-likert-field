@@ -55,3 +55,7 @@ docs/_build/
 
 # Mac
 .DS_Store
+
+# Sqlite dev dbs
+.sqlite
+.sqlite3
