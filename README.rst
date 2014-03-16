@@ -30,7 +30,7 @@ This package requires Django 1.4.2 or later. It can be installed in the usual ma
 
 Then add the app to your list of installed apps::
 
-    # your_project/settings.py
+    # settings.py
     #
     INSTALLED_APPS = (
         'likert_field',
