@@ -341,13 +341,13 @@ There is a sample application included if you downloaded the tarball. You can tr
 Troubleshooting
 ===============
 
-Django-likert-field contains two test suites. One is for the field and one is for an implementation of the field in a Django 1.4 project.
+Django-likert-field contains two test suites. One is for the field and one is for an implementation of the field in a Django 1.4.2 project.
 
 You can run the field tests by downloading the tarball and running 'test' in setup.py::
 
     $ python setup.py test
 
-You can run the Django 1.4 demo test in a similar manner::
+You can run the Django 1.4.2 demo test in a similar manner::
 
     $ python setup.py test_demo
 
