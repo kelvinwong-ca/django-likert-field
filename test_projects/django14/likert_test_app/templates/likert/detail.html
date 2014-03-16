@@ -1,0 +1,45 @@
+{% extends "likert/base.html" %}
+{% load i18n static likert_fa_stars likert_bs_stars %}
+
+
+{% block extra_head %}
+
+<style type="text/css" media="screen">
+  .likert-star {
+      color: #ff0000;
+  }
+  s.fa.fa-star.likert-star {
+      color: #ffd76e;
+      text-shadow:-1px -1px 0 #e1ba53,  
+                   1px -1px 0 #e1ba53,
+                  -1px  1px 0 #e1ba53,
+                   1px  1px 0 #e1ba53;
+      -webkit-text-stroke: 1px #e1ba53;
+  }
+  s.fa.fa-star-o.likert-star {
+      color: #c0c0c0;
+  }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{% trans 'Survey Response' %} #{{ survey.pk }}</h1>
+
+      <h2>{% trans 'Bootstrap 3 Glyphicons icons' %}</h2>
+      <p>{% trans 'Item' %}: {{ survey.item|bs_stars3 }}</p>
+      <p>{% trans 'Ice cream is yummy' %}: {{ survey.ice_cream_is_yummy|bs_stars3 }}</p>
+      <p>{% trans 'Survey questions should not be optional' %}: {{ survey.questions_should_not_be_optional|bs_stars3 }}</p>
+
+      <h2>{% trans 'Font Awesome 4 icons' %}</h2>
+      <p>{% trans 'Item' %}: {{ survey.item|fa_stars4:7 }}</p>
+      <p>{% trans 'Ice cream is yummy' %}: {{ survey.ice_cream_is_yummy|fa_stars4 }}</p>
+      <p>{% trans 'Survey questions should not be optional' %}: {{ survey.questions_should_not_be_optional|fa_stars4 }}</p>
+    </div>
+  </div>
+
+{% endblock %}
