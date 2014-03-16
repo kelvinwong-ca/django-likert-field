@@ -338,8 +338,6 @@ There is a sample application included if you downloaded the tarball. You can tr
     Development server is running at http://127.0.0.1:8000/
     Quit the server with CONTROL-C.
 
-**Note**: This is a Django 1.4.2 application. If you try to run it in Django 1.5 it won't like the URL tags because they changed in Django 1.5. Just run it in Django 1.4.2 and be happy.
-
 Troubleshooting
 ===============
 
