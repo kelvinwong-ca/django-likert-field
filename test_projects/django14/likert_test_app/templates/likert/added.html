@@ -1,5 +1,7 @@
 {% extends "likert/base.html" %}
 {% load i18n static %}
+{% load url from future %}
+
 
 {% block content %}
 
@@ -7,6 +9,6 @@
 
   <p>{% trans 'Your response has been added. Thank you.' %}</p>
 
-  <p><a href="{% url likert_list %}" class="btn btn-success btn-lg">{% trans 'View responses' %}</a></p>
+  <p><a href="{% url 'likert_list' %}" class="btn btn-success btn-lg">{% trans 'View responses' %}</a></p>
 
 {% endblock %}
