@@ -328,6 +328,7 @@ There is a sample application included if you downloaded the tarball. You can tr
     $ pwd
     /home/user/teststuff/django-likert-field
     $ cd test_projects/django14
+    $ python manage.py syncdb
     $ python manage.py runserver
 
     Validating models...
