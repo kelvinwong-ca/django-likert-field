@@ -165,7 +165,16 @@ This will render a form with the following HTML::
 Widget
 ======
 
+There is also a simple widget named LikertTextField. It is essentially a TextInput widget that adds a class ("likert-field") to the generated HTML input::
 
+    >>> from likert_field.widgets import LikertTextField
+    >>> w = LikertTextField()
+
+    >>> w.render('item_1', 3)
+    u'<input type="text" name="item_1" value="3" class="likert-field" />'
+
+    >>> w.render('item_1', None)
+    u'<input type="text" name="item_1" class="likert-field" />'
 
 Rendering Your Likert Fields
 ============================
