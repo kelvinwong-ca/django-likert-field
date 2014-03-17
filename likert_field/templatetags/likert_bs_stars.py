@@ -25,6 +25,13 @@ star_set_3 = {
     'noanswer': "<i class='glyphicon glyphicon-ban-circle likert-star'></i>"
 }
 
+# Bootstrap glyphicon stars ver 3 for bootstrap-star-rating
+star_set_3_bsr = {
+    'star': "<i class='glyphicon glyphicon-star likert-star'></i>",
+    'unlit': "<i class='glyphicon glyphicon-star-empty likert-star'></i>",
+    'noanswer': "<i class='glyphicon glyphicon-minus-sign likert-star'></i>"
+}
+
 
 def bs_stars2(num, max_stars=5):
     """
@@ -48,3 +55,17 @@ def bs_stars3(num, max_stars=5):
     return mark_safe(render_stars(num, max_stars, star_set_3))
 
 register.filter('bs_stars3', bs_stars3)
+
+
+def bs_stars3_bsr(num, max_stars=5):
+    """
+    Stars for Bootstrap 3 w bootstrap-star-rating
+
+    BSR uses a minus sign for an empty response
+
+    If num is not None, the returned string will contain num solid stars
+    followed by max_stars - num empty stars
+    """
+    return mark_safe(render_stars(num, max_stars, star_set_3_bsr))
+
+register.filter('bs_stars3_bsr', bs_stars3_bsr)

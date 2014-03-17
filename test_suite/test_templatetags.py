@@ -6,7 +6,8 @@ from django.utils.six.moves import xrange
 
 from likert_field.templatetags.likert_star_tools import render_stars
 from likert_field.templatetags.likert_fa_stars import fa_stars3, fa_stars4
-from likert_field.templatetags.likert_bs_stars import bs_stars2, bs_stars3
+from likert_field.templatetags.likert_bs_stars import (
+    bs_stars2, bs_stars3, bs_stars3_bsr)
 
 
 class StarToolsTestCase(SimpleTestCase):
@@ -100,7 +101,7 @@ class BootstrapTestCase(SimpleTestCase):
         stars = bs_stars2(num, max_stars)
         self.assertEqual(stars, expected_stars)
 
-    def test_fa_stars2_render_noanswer(self):
+    def test_bs_stars2_render_noanswer(self):
         num = None
         expected_stars = "<i class='icon-ban-circle likert-star'></i>"
         stars = bs_stars2(num)
@@ -126,11 +127,19 @@ class BootstrapTestCase(SimpleTestCase):
         stars = bs_stars3(num, max_stars)
         self.assertEqual(stars, expected_stars)
 
-    def test_fa_stars3_render_noanswer(self):
+    def test_bs_stars3_render_noanswer(self):
         num = None
         expected_stars = (
             "<i class='glyphicon glyphicon-ban-circle likert-star'></i>")
         stars = bs_stars3(num)
+        self.assertEqual(stars, expected_stars)
+
+    def test_bs_stars3_bsr_render_noanswer(self):
+        """The BSR variant is the same as bs_stars3 except NULL handler"""
+        num = None
+        expected_stars = (
+            "<i class='glyphicon glyphicon-minus-sign likert-star'></i>")
+        stars = bs_stars3_bsr(num)
         self.assertEqual(stars, expected_stars)
 
 

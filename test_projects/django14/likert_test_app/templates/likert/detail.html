@@ -25,6 +25,9 @@
   i.glyphicon.glyphicon-ban-circle.likert-star {
       color: #cccccc;
   }
+  i.glyphicon.glyphicon-minus-sign.likert-star {
+      color: #cccccc;
+  }
 </style>
 
 {% endblock %}
@@ -40,6 +43,11 @@
       <p>{% trans 'Item' %}: {{ survey.item|bs_stars3 }}</p>
       <p>{% trans 'Ice cream is yummy' %}: {{ survey.ice_cream_is_yummy|bs_stars3 }}</p>
       <p>{% trans 'Survey questions should not be optional' %}: {{ survey.questions_should_not_be_optional|bs_stars3 }}</p>
+
+      <h2>{% trans 'Bootstrap 3 BSR' %}</h2>
+      <p>{% trans 'Item' %}: {{ survey.item|bs_stars3_bsr }}</p>
+      <p>{% trans 'Ice cream is yummy' %}: {{ survey.ice_cream_is_yummy|bs_stars3_bsr }}</p>
+      <p>{% trans 'Survey questions should not be optional' %}: {{ survey.questions_should_not_be_optional|bs_stars3_bsr }}</p>
 
       <h2>{% trans 'Font Awesome 4 icons' %}</h2>
       <p>{% trans 'Item' %}: {{ survey.item|fa_stars4:7 }}</p>
