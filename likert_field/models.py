@@ -54,7 +54,7 @@ class LikertField(models.IntegerField):
     def formfield(self, **kwargs):
         defaults = {
             'min_value': 0,
-            'form_class': forms.LikertField
+            'form_class': forms.LikertFormField
         }
         defaults.update(kwargs)
         return super(LikertField, self).formfield(**defaults)

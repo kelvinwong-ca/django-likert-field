@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from .widgets import LikertTextField
 
 
-class LikertField(fields.IntegerField):
+class LikertFormField(fields.IntegerField):
     widget = LikertTextField
     default_error_messages = {
         'invalid': _('Please rate how strongly you agree or disagree with '
@@ -22,4 +22,4 @@ class LikertField(fields.IntegerField):
     def __init__(self, min_value=0, *args, **kwargs):
         kwargs.setdefault('widget', self.widget)
         kwargs.setdefault('min_value', min_value)
-        super(LikertField, self).__init__(*args, **kwargs)
+        super(LikertFormField, self).__init__(*args, **kwargs)

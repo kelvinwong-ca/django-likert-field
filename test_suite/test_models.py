@@ -63,4 +63,4 @@ class LikertFieldTestCase(SimpleTestCase):
         item = LikertField()
         ff = item.formfield()
         self.assertEqual(ff.min_value, 0)
-        self.assertIsInstance(ff, forms.LikertField)
+        self.assertIsInstance(ff, forms.LikertFormField)
