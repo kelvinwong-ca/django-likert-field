@@ -145,15 +145,15 @@ If you require a score from one to seven from your user (a 7-point Likert item).
 Forms
 =====
 
-This package includes a form field called LikertField. It can be used to create a Django form::
+This package includes a form field called LikertFormField. It can be used to create a Django form::
 
     # forms.py
     #
     from django.forms import Form
-    from likert_field.forms import LikertField
+    from likert_field.forms import LikertFormField
 
     class SurveyForm(Form):
-        i_like_snakes = LikertField()
+        i_like_snakes = LikertFormField()
 
 This will render a form with the following HTML::
 
