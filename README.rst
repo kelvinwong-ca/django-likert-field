@@ -145,6 +145,10 @@ If you require a score from one to seven from your user (a 7-point Likert item).
 Forms
 =====
 
+.. warning::
+
+    The form field is now named LikertFormField to avoid collisions with the model field
+
 This package includes a form field called LikertFormField. It can be used to create a Django form::
 
     # forms.py
