@@ -13,6 +13,15 @@ README_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)),
 long_description = open(README_PATH, 'r').read()
 
 
+def setup_django():
+    """Initialize apps for Django 1.7 and later"""
+    import django
+    try:
+        django.setup()
+    except AttributeError:
+        pass
+
+
 class DemoTester(Command):
     """Runs demonstration project tests"""
 
@@ -22,6 +31,7 @@ class DemoTester(Command):
         '1.5': 'test_projects.django14.django14.settings',
         '1.6': 'test_projects.django14.django14.settings',
         '1.7': 'test_projects.django14.django14.settings',
+        '1.8': 'test_projects.django14.django14.settings',
     }
 
     def initialize_options(self):
@@ -48,11 +58,12 @@ class DemoTester(Command):
             print("Please install Django 1.4.2 - 1.7 to run the test suite")
             exit(-1)
 
-        import django
-        try:
-            django.setup()
-        except AttributeError:
-            pass
+        setup_django()
+        # import django
+        # try:
+        #     django.setup()
+        # except AttributeError:
+        #     pass
 
         call_command('test', 'likert_test_app', interactive=False, verbosity=1)
 
@@ -73,11 +84,12 @@ class Tester(Command):
     def run(self):
         sys.dont_write_bytecode = True
         os.environ['DJANGO_SETTINGS_MODULE'] = 'test_suite.settings_for_tests'
-        import django
-        try:
-            django.setup()
-        except AttributeError:
-            pass
+        setup_django()
+        # import django
+        # try:
+        #     django.setup()
+        # except AttributeError:
+        #     pass
 
         try:
             from django.utils.unittest import TextTestRunner, defaultTestLoader
