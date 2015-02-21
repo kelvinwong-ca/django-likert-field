@@ -117,9 +117,10 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'global_assets', 'templates'),
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'likert_field',
     'likert_test_app',
+    'suthern',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,7 +132,14 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-)
+]
+
+try:
+    import south
+except ImportError:
+    pass
+else:
+    INSTALLED_APPS += ['south']
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
