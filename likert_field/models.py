@@ -21,10 +21,10 @@ class LikertField(models.IntegerField):
 
         By default responses are optional, so 'blank' is True
         """
-        if 'null' not in kwargs and not kwargs.get('null'):
+        if kwargs.get('null', True):
             kwargs['null'] = True
 
-        if 'blank' not in kwargs and not kwargs.get('blank'):
+        if kwargs.get('blank', True):
             kwargs['blank'] = True
 
         super(LikertField, self).__init__(*args, **kwargs)
@@ -62,6 +62,7 @@ class LikertField(models.IntegerField):
 
 try:
     from south.modelsinspector import add_introspection_rules
-    add_introspection_rules([], ["^likert_field\.models\.LikertField"])
 except ImportError:
     pass
+else:
+    add_introspection_rules([], ["^likert_field\.models\.LikertField"])
