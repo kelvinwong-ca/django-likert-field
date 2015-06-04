@@ -32,6 +32,7 @@ class DemoTester(Command):
         '1.6': 'test_projects.django14.django14.settings',
         '1.7': 'test_projects.django14.django14.settings',
         '1.8': 'test_projects.django14.django14.settings',
+        '1.9': 'test_projects.django14.django14.settings',
     }
 
     def initialize_options(self):
