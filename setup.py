@@ -31,8 +31,8 @@ class DemoTester(Command):
         '1.5': 'test_projects.django14.django14.settings',
         '1.6': 'test_projects.django14.django14.settings',
         '1.7': 'test_projects.django14.django14.settings',
-        '1.8': 'test_projects.django14.django14.settings',
-        '1.9': 'test_projects.django14.django14.settings',
+        '1.8': 'test_projects.django18.django18.settings',
+        '1.9': 'test_projects.django18.django18.settings',
     }
 
     def initialize_options(self):
@@ -45,10 +45,17 @@ class DemoTester(Command):
         sys.dont_write_bytecode = True
         from django import get_version
         django_release = re.search(r'^\d\.\d', get_version()).group(0)
-        if ((django_release not in self.test_settings.keys())
-                or ([int(n) for n in re.split(r'[.ab]', get_version())]
-                    < [1, 4, 2])):
-            print("Please install Django 1.4.2 - 1.7 to run the test suite")
+        test_settings_exist = django_release in self.test_settings.keys()
+        try:
+            dj_ver = [int(n) for n in re.split(r'[.ab]', get_version())]
+        except ValueError:
+            # Pre-release Djangos must be testable!!!
+            dj_too_old = False
+        else:
+            dj_too_old = dj_ver < [1, 4, 2]
+
+        if test_settings_exist is False or dj_too_old:
+            print("Please install Django 1.4.19 - 1.9 to run the test suite")
             exit(-1)
 
         os.environ['DJANGO_SETTINGS_MODULE'] = self.test_settings[
@@ -56,17 +63,20 @@ class DemoTester(Command):
         try:
             from django.core.management import call_command
         except ImportError:
-            print("Please install Django 1.4.2 - 1.7 to run the test suite")
+            print("Please install Django 1.4.2 - 1.9 to run the test suite")
             exit(-1)
 
         setup_django()
-        # import django
-        # try:
-        #     django.setup()
-        # except AttributeError:
-        #     pass
 
         call_command('test', 'likert_test_app', interactive=False, verbosity=1)
+
+        try:
+            import south
+        except ImportError:
+            pass
+        else:
+            call_command('test', 'suthern', interactive=False, verbosity=1)
+
 
 cmdclasses['test_demo'] = DemoTester
 
@@ -86,17 +96,11 @@ class Tester(Command):
         sys.dont_write_bytecode = True
         os.environ['DJANGO_SETTINGS_MODULE'] = 'test_suite.settings_for_tests'
         setup_django()
-        # import django
-        # try:
-        #     django.setup()
-        # except AttributeError:
-        #     pass
 
         try:
             from django.utils.unittest import TextTestRunner, defaultTestLoader
         except ImportError:
-            print("Please install Django => 1.4.2 to run the test suite")
-            exit(-1)
+            from unittest import TextTestRunner, defaultTestLoader
 
         from test_suite import (
             test_forms, test_models, test_templatetags, test_widgets)
@@ -138,6 +142,7 @@ setup(
                  'Programming Language :: Python :: 3.2',
                  'Programming Language :: Python :: 3.3',
                  'Programming Language :: Python :: 3.4',
+                 'Programming Language :: Python :: 3.5',
                  'Topic :: Internet :: WWW/HTTP'],
     packages=['likert_field', 'likert_field.templatetags'],
     cmdclass=cmdclasses
