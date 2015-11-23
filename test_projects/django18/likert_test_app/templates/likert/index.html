@@ -1,0 +1,24 @@
+{% extends "likert/base.html" %}
+{% load i18n static %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{% trans 'Surveys' %}</h1>
+
+      {% if not surveys %}
+      <p>Be the first to <a href="{% url 'likert_add' %}">complete a survey</a>.</p>
+      {% else %}
+      <ul>
+        {% for survey in surveys %}
+        <li><a href="{% url 'likert_detail' survey.pk %}">{% trans 'Response' %} #{{ survey.pk }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      <p><a href="{% url 'likert_add' %}" class="btn btn-success btn-lg">{% trans 'Add a survey response' %}</a></p>
+    </div>
+  </div>
+
+{% endblock %}

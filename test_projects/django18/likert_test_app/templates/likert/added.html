@@ -1,0 +1,13 @@
+{% extends "likert/base.html" %}
+{% load i18n static %}
+
+
+{% block content %}
+
+  <h1>{% trans 'Survey response added' %}</h1>
+
+  <p>{% trans 'Your response has been added. Thank you.' %}</p>
+
+  <p><a href="{% url 'likert_list' %}" class="btn btn-success btn-lg">{% trans 'View responses' %}</a></p>
+
+{% endblock %}

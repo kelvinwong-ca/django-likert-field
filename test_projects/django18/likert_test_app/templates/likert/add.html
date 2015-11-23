@@ -1,0 +1,38 @@
+{% extends "likert/base.html" %}
+{% load i18n static %}
+
+
+{% block extra_head %}
+
+  <link rel="stylesheet" href="{{ STATIC_URL }}likert/bootstrap-star-rating/css/star-rating.min.css" media="screen, projector, print" type="text/css">
+
+{% endblock %}
+
+
+{% block content %}
+
+  <h1>{% trans 'Add Survey Response' %}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-success btn-lg">{% trans 'Save' %}</button>
+
+  </form>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="{{ STATIC_URL }}likert/bootstrap-star-rating/js/star-rating.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $(".likert-field").rating();
+  });
+</script>
+
+{% endblock %}

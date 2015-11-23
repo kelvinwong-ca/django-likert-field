@@ -1,0 +1,13 @@
+{% extends "app/base.html" %}
+{% load i18n static %}
+
+
+{% block content %}
+
+  <h1>{% trans 'Likert Demos' %}</h1>
+
+  <ul>
+    <li><a href="{% url 'likert_list' %}">{% trans 'Sample survey app' %}</a></li>
+  </ul>
+
+{% endblock %}
