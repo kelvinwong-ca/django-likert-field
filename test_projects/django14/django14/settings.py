@@ -10,6 +10,8 @@ sys.path.append(LIKERT_DIR)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+ALLOWED_HOSTS = ['127.0.0.1']
+
 ADMINS = (
     ('Kelvin', 'code@kelvinwong.ca'),
 )
@@ -120,7 +122,6 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = [
     'likert_field',
     'likert_test_app',
-    'suthern',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -134,12 +135,17 @@ INSTALLED_APPS = [
     # 'django.contrib.admindocs',
 ]
 
+SOUTH_APPS = [
+    'south',
+    'suthern',
+]
+
 try:
     import south
 except ImportError:
     pass
 else:
-    INSTALLED_APPS += ['south']
+    INSTALLED_APPS.extend(SOUTH_APPS)
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
