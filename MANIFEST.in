@@ -25,3 +25,15 @@ recursive-include test_projects/django14/likert_test_app/static/likert/bootstrap
 recursive-include test_projects/django14/likert_test_app/templates/likert *.html
 
 
+recursive-include test_projects/django18 *.py
+recursive-include test_projects/django18/django18 *.py
+recursive-include test_projects/django18/global_assets/templates *.html
+recursive-include test_projects/django18/global_assets/templates/app *.html
+recursive-include test_projects/django18/global_assets/templates/theme *.html
+recursive-include test_projects/django18/likert_test_app *.py
+recursive-include test_projects/django18/likert_test_app/static/likert/bootstrap-star-rating *.md *.json
+recursive-include test_projects/django18/likert_test_app/static/likert/bootstrap-star-rating/css *.css
+recursive-include test_projects/django18/likert_test_app/static/likert/bootstrap-star-rating/examples *.html
+recursive-include test_projects/django18/likert_test_app/static/likert/bootstrap-star-rating/js *.js
+recursive-include test_projects/django18/likert_test_app/templates/likert *.html
+
