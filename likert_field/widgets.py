@@ -6,8 +6,7 @@ from django.forms import widgets
 
 class LikertTextField(widgets.TextInput):
     """A Likert field represented as a text input"""
-
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):    
         """
         Returns this Widget rendered as HTML, as a Unicode string.
         """
